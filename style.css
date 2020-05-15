@@ -50,7 +50,7 @@ html{
     display: none;
 }
 
-#trumpContainer{
+#fruitContainer{
     width: 650px;
     height: 400px;
     margin: 65px auto 10px auto;
@@ -184,7 +184,7 @@ html{
     margin: 0px 5px;
 }
 
-.trump{
+.fruit{
     display: none;
     position: absolute;
 }

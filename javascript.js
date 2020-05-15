@@ -1,33 +1,8 @@
 
-//Click on start/reset button
-// Are we already playing?
-    //Yes
-        //reload page
-    //no
-        //start game
-            //Change button text to reset game
-            //show trialsLeft box
-            //generate random trumps
-                //move trump down one step
-                //Is it at the bottom of the page?
-                    //yes
-                        //any trials left?
-                            //yes
-                                //remove one heart (life) and continue loop
-                            //no 
-                                //show game over message
-                                //Change button text to start game
-                    //no
-                        //move the trumps down one step and continue loop
-//slice trump
-    //play sound
-    //increase score by one
-    
-
  var playing = false;
  var score;
  var trialsLeft;   
- var trumps = ["fruit1","fruit2","fruit3", "fruit4", "fruit5", "fruit6", "fruit7",];
+ var fruits = ["fruit1","fruit2","fruit3", "fruit4", "fruit5", "fruit6", "fruit7",];
  var step;
  var action; //used for setInterval function
 //click on start/reset button
@@ -56,22 +31,22 @@
             trialsLeft = 3;
             addHearts();
 
-            //Start sending trumps
+            //Start sending fruits
             sendAction();
             }
         });
 
 
-//Slice a Trump
+//Slice a fruit
 //increase score
 $("#picture1").mouseover(function(){ 
     score++;
     $("#scoreValue").html(score);
     //play sound
     $("#sliceSound")[0].play();
-    //slice trump
+    //slice fruit
     $("#picture1").hide("explode", 500);
-    //send new trump
+    //send new fruit
     setTimeout(sendAction, 500);
  });
 
@@ -87,19 +62,19 @@ function addHearts(){
 }
 
 
-//send trumps
+//send fruits
 function sendAction(){
     $("#picture1").show();
-    chooseTrump(); //random position
+    chooseFruit(); //random position
     $("#picture1").css({
         "left" : Math.round(550*Math.random()),
         "top"  : -50
     }); 
 }
 
-//generate a random trump
-function chooseTrump(){
-    $("#picture1").attr("src", "images/" + trumps[Math.round(6*Math.random())] + ".png");
+//generate a random fruit
+function chooseFruit(){
+    $("#picture1").attr("src", "images/" + fruits[Math.round(6*Math.random())] + ".png");
 }
 
 //generate a random step
@@ -110,12 +85,12 @@ function stopAction(){
     clearInterval(action);
 }
 
-//move Trump down by one step every 10ms
+//move fruit down by one step every 10ms
 action = setInterval(function(){
     $("#picture1").css("top", $("#picture1").position().top + step);
 
-    //check if the Trump is too low
-    if($("#picture1").position().top > $("#trumpContainer").height()){
+    //check if the fruit is too low
+    if($("#picture1").position().top > $("#fruitContainer").height()){
 
         //check if we have trials left
         if(trialsLeft > 1){  //yes
